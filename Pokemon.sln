@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pokemon-console", "pokemon-console\pokemon-console.csproj", "{BE9715AC-EB5B-46E9-9DD0-2D901AAC21F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pokemon-tests", "pokemon-tests\pokemon-tests.csproj", "{A0E1C44F-638F-41B9-8A8E-8938F5F70A56}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BE9715AC-EB5B-46E9-9DD0-2D901AAC21F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE9715AC-EB5B-46E9-9DD0-2D901AAC21F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE9715AC-EB5B-46E9-9DD0-2D901AAC21F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE9715AC-EB5B-46E9-9DD0-2D901AAC21F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0E1C44F-638F-41B9-8A8E-8938F5F70A56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0E1C44F-638F-41B9-8A8E-8938F5F70A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0E1C44F-638F-41B9-8A8E-8938F5F70A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0E1C44F-638F-41B9-8A8E-8938F5F70A56}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
