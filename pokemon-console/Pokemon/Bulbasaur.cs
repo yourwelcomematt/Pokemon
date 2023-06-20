@@ -1,0 +1,12 @@
+namespace Pokemon;
+
+public class Bulbasaur : BasePokemon
+{
+    public override int HitPoints { get; set; } = 30;
+
+    public override Move[] CurrentMoves { get; } =
+    {
+        new("Tackle", 3),
+        new("Vine Whip", 5)
+    };
+}
