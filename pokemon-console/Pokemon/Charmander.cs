@@ -2,11 +2,12 @@ namespace Pokemon;
 
 public class Charmander : BasePokemon
 {
-    public override int HitPoints { get; set; } = 30;
+    public override string Name => "Charmander";
+    public override int HitPoints { get; set; } = 20;
 
-    public override Move[] CurrentMoves { get; } = 
+    public override List<Move> CurrentMoves { get; } = new()
     {
-        new("Scratch", 3),
-        new("Ember", 5)
+        new Move("Scratch", 3),
+        new Move("Ember", 5)
     };
 }

@@ -2,6 +2,7 @@ namespace Pokemon;
 
 public abstract class BasePokemon
 {
+    public abstract string Name { get; }
     public abstract int HitPoints { get; set; }
     // public int Level { get; }
     // public int Experience { get; private set; }
@@ -12,10 +13,5 @@ public abstract class BasePokemon
     // public int SpecialDefense;
     // public int Speed;
 
-    public abstract Move[] CurrentMoves { get; }
-
-    public void UpdateHP(int moveDamage)
-    {
-        HitPoints -= moveDamage;
-    }
+    public abstract List<Move> CurrentMoves { get; }
 }

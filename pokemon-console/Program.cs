@@ -1,6 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Pokemon;
 
-Console.WriteLine("Hello, World!");
+var battle = new Battle();
+battle.Start();
 
 /*
 Mechanisms:

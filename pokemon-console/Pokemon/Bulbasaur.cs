@@ -2,11 +2,12 @@ namespace Pokemon;
 
 public class Bulbasaur : BasePokemon
 {
-    public override int HitPoints { get; set; } = 30;
+    public override string Name => "Bulbasaur";
+    public override int HitPoints { get; set; } = 20;
 
-    public override Move[] CurrentMoves { get; } =
+    public override List<Move> CurrentMoves { get; } = new()
     {
-        new("Tackle", 3),
-        new("Vine Whip", 5)
+        new Move("Tackle", 3),
+        new Move("Vine Whip", 5)
     };
 }
