@@ -8,4 +8,8 @@
         <RootNamespace>Pokemon</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="NetCoreAudio" Version="1.7.0" />
+    </ItemGroup>
+
 </Project>

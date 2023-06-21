@@ -1,3 +1,5 @@
+using NetCoreAudio;
+
 namespace Pokemon;
 
 public class Battle
@@ -32,7 +34,9 @@ public class Battle
         
         Console.WriteLine("\nLet the battle commence! \n");
         Thread.Sleep(1000);
-        
+
+        var player = new Player();
+        player.Play("/Users/Matt/Coding/Projects/RiderProjects/Pokemon/pokemon-console/Music/Trainer Battle - Pokémon Red & Blue Extended.mp3");
 
         foreach (var trainer in _trainers)
         {
