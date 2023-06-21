@@ -2,10 +2,11 @@ namespace Pokemon;
 
 public class Trainer
 {
-    public List<BasePokemon> Pokemon { get; }
+    public string Name { get; }
+    public List<BasePokemon> Pokemon { get; } = new();
 
-    public Trainer(BasePokemon chosenPokemon)
+    public Trainer(string name)
     {
-        Pokemon = new List<BasePokemon> {chosenPokemon};
+        Name = name;
     }
 }
