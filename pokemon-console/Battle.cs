@@ -33,17 +33,17 @@ public class Battle
         }
         
         Console.WriteLine("\nLet the battle commence! \n");
-        Thread.Sleep(1000);
-
+        
         var player = new Player();
-        player.Play("/Users/Matt/Coding/Projects/RiderProjects/Pokemon/pokemon-console/Music/Trainer Battle - Pokémon Red & Blue Extended.mp3");
-
+        player.Play("../../../Music/Trainer Battle - Pokémon Red & Blue Extended.mp3");
+        
+        Thread.Sleep(1000);
+        
         foreach (var trainer in _trainers)
         {
             Console.WriteLine($"{trainer.Name} entered {trainer.Pokemon[0].Name}!");
+            Thread.Sleep(1000);
         }
-        
-        Thread.Sleep(1000);
 
         var neitherPokemonHasFainted = true;
         
