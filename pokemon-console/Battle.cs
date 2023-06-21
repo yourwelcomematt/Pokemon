@@ -72,8 +72,14 @@ public class Battle
                 if (HasPokemonFainted(currentOpponentPokemon))
                 {
                     Console.WriteLine($"\n{currentOpponentPokemon.Name} has fainted!");
+                    
+                    player.Play(
+                        "../../../Music/Pokémon Red & Blue Music Trainer Victory Theme.mp3");
                     Thread.Sleep(1000);
+                    
                     Console.WriteLine($"{_trainers[i].Name} wins!");
+                    Thread.Sleep(31000);
+                    
                     neitherPokemonHasFainted = false;
                     break;
                 }
