@@ -19,7 +19,7 @@ public class Battle
 
     public void Start()
     {
-        Console.WriteLine("*** Welcome to the world of Pokemon! ***");
+        Console.WriteLine("***** Welcome to the world of Pokemon! *****");
 
         foreach (var trainer in _trainers)
         {
@@ -29,8 +29,7 @@ public class Battle
             
             while (!IsValidPokemonChoice(pokemonChoice))
             {
-                Console.Clear();
-                Console.WriteLine("Oak's words echoed... There's a time and place for everything, but not now. Please choose a Pokemon from the list.");
+                Console.WriteLine("\nOak's words echoed... There's a time and place for everything, but not now. Please choose a Pokemon from the list.");
                 PrintAvailablePokemon();
                 pokemonChoice = Console.ReadLine();
             }
@@ -38,6 +37,7 @@ public class Battle
             var chosenPokemon = _availablePokemon.Find(pokemon => pokemon.Name.Equals(pokemonChoice, StringComparison.OrdinalIgnoreCase));
             trainer.Pokemon.Add(chosenPokemon);
             _availablePokemon.Remove(chosenPokemon);
+            
             Console.Clear();
             Console.WriteLine($"{trainer.Name} has chosen {chosenPokemon.Name}!");
         }
@@ -75,15 +75,15 @@ public class Battle
                 
                 while (!IsValidMoveChoice(currentTrainerPokemon, moveChoice))
                 {
-                    Console.Clear();
-                    Console.WriteLine("Oak's words echoed... There's a time and place for everything, but not now. Please choose a move from the list.");
+                    Console.WriteLine("\nOak's words echoed... There's a time and place for everything, but not now. Please choose a move from the list.");
                     PrintAvailableMoves(currentTrainerPokemon);
                     moveChoice = Console.ReadLine();
                 }
                 
                 var chosenMove = currentTrainerPokemon.CurrentMoves.Find(move => move.Name.Equals(moveChoice, StringComparison.OrdinalIgnoreCase));
 
-                Console.WriteLine($"\n{currentTrainerPokemon.Name} used {chosenMove.Name}!");
+                Console.Clear();
+                Console.WriteLine($"{currentTrainerPokemon.Name} used {chosenMove.Name}!");
                 Thread.Sleep(1000);
                 Console.WriteLine($"{currentOpponentPokemon.Name} took {chosenMove.Power} damage!");
                 Thread.Sleep(1000);
@@ -91,10 +91,10 @@ public class Battle
 
                 if (HasPokemonFainted(currentOpponentPokemon))
                 {
-                    Console.WriteLine($"\n{currentOpponentPokemon.Name} has fainted!");
+                    Console.Clear();
+                    Console.WriteLine($"{currentOpponentPokemon.Name} has fainted!");
                     
-                    player.Play(
-                        "../../../Music/Pokémon Red & Blue Music Trainer Victory Theme.mp3");
+                    player.Play("../../../Music/Pokémon Red & Blue Music Trainer Victory Theme.mp3");
                     Thread.Sleep(1000);
                     
                     Console.WriteLine($"{_trainers[i].Name} wins!");
