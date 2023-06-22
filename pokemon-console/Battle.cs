@@ -17,10 +17,23 @@ public class Battle
         new Trainer("Gary")
     };
 
+    private readonly Player _musicPlayer = new();
+
     public void Start()
     {
         ConsoleWriter.PrintWelcomeMessage();
+        ChooseYourPokemon();
+        
+        ConsoleWriter.PrintBattleStartMessage();
+        _musicPlayer.Play("../../../Music/Trainer Battle - Pokémon Red & Blue Extended.mp3");
+        Thread.Sleep(1000);
+        
+        ConsoleWriter.PrintEnteredPokemonMessage(_trainers);
+        StartGameLoop();
+    }
 
+    private void ChooseYourPokemon()
+    {
         foreach (var trainer in _trainers)
         {
             ConsoleWriter.PrintChoosePokemonPrompt(trainer);
@@ -41,31 +54,21 @@ public class Battle
             Console.Clear();
             ConsoleWriter.PrintChosenPokemonMessage(trainer, chosenPokemon);
         }
-        
-        ConsoleWriter.PrintStartBattleMessage();
-        
-        var player = new Player();
-        player.Play("../../../Music/Trainer Battle - Pokémon Red & Blue Extended.mp3");
-        
-        Thread.Sleep(1000);
-        
-        foreach (var trainer in _trainers)
-        {
-            ConsoleWriter.PrintEnteredPokemonMessage(trainer);
-            Thread.Sleep(1000);
-        }
+    }
 
+    private void StartGameLoop()
+    {
         var neitherPokemonHasFainted = true;
         
         while (neitherPokemonHasFainted)
         {
             for (var i = 0; i < 2; i++)
             {
-                Console.Clear();
                 var currentTrainer = _trainers[i];
                 var currentTrainerPokemon = currentTrainer.Pokemon[0];
                 var currentOpponentPokemon = i == 1 ? _trainers[i - 1].Pokemon[0] : _trainers[i + 1].Pokemon[0];
                 
+                Console.Clear();
                 ConsoleWriter.PrintHpOfBothPokemon(currentTrainerPokemon, currentOpponentPokemon);
 
                 ConsoleWriter.PrintChooseMovePrompt(currentTrainerPokemon);
@@ -93,7 +96,7 @@ public class Battle
                     Console.Clear();
                     ConsoleWriter.PrintFaintedPokemonMessage(currentOpponentPokemon);
                     
-                    player.Play("../../../Music/Pokémon Red & Blue Music Trainer Victory Theme.mp3");
+                    _musicPlayer.Play("../../../Music/Pokémon Red & Blue Music Trainer Victory Theme.mp3");
                     Thread.Sleep(1000);
                     
                     ConsoleWriter.PrintWinMessage(currentTrainer);

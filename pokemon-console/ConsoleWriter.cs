@@ -25,14 +25,18 @@ public static class ConsoleWriter
         Console.WriteLine($"{trainer.Name} has chosen {chosenPokemon.Name}!");
     }
 
-    public static void PrintStartBattleMessage()
+    public static void PrintBattleStartMessage()
     {
         Console.WriteLine("\nLet the battle commence! \n");
     }
     
-    public static void PrintEnteredPokemonMessage(Trainer trainer)
+    public static void PrintEnteredPokemonMessage(List<Trainer> trainers)
     {
-        Console.WriteLine($"{trainer.Name} entered {trainer.Pokemon[0].Name}!");
+        foreach (var trainer in trainers)
+        {
+            Console.WriteLine($"{trainer.Name} entered {trainer.Pokemon[0].Name}!");
+            Thread.Sleep(1000);
+        }
     }
 
     public static void PrintHpOfBothPokemon(BasePokemon currentTrainerPokemon, BasePokemon currentOpponentPokemon)
