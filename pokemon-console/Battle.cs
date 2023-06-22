@@ -8,7 +8,8 @@ public class Battle
     {
         new Bulbasaur(),
         new Charmander(),
-        new Squirtle()
+        new Squirtle(),
+        new Pikachu()
     };
 
     private readonly List<Trainer> _trainers = new()
