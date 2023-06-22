@@ -25,10 +25,20 @@ public class Battle
         {
             Console.WriteLine($"\n{trainer.Name}, choose your Pokemon:");
             PrintAvailablePokemon();
-            var choice = Console.ReadLine();
-            var chosenPokemon = _availablePokemon.Find(pokemon => pokemon.Name.Equals(choice));
+            var pokemonChoice = Console.ReadLine();
+            
+            while (!IsValidPokemonChoice(pokemonChoice))
+            {
+                Console.Clear();
+                Console.WriteLine("Oak's words echoed... There's a time and place for everything, but not now. Please choose a Pokemon from the list.");
+                PrintAvailablePokemon();
+                pokemonChoice = Console.ReadLine();
+            }
+            
+            var chosenPokemon = _availablePokemon.Find(pokemon => pokemon.Name.Equals(pokemonChoice, StringComparison.OrdinalIgnoreCase));
             trainer.Pokemon.Add(chosenPokemon);
             _availablePokemon.Remove(chosenPokemon);
+            Console.Clear();
             Console.WriteLine($"{trainer.Name} has chosen {chosenPokemon.Name}!");
         }
         
@@ -55,13 +65,23 @@ public class Battle
                 var currentTrainerPokemon = _trainers[i].Pokemon[0];
                 var currentOpponentPokemon = i == 1 ? _trainers[i - 1].Pokemon[0] : _trainers[i + 1].Pokemon[0];
                 
-                Console.WriteLine($"\n{currentTrainerPokemon.Name}'s HP is {currentTrainerPokemon.HitPoints}");
+                Console.WriteLine($"{currentTrainerPokemon.Name}'s HP is {currentTrainerPokemon.HitPoints}");
                 Console.WriteLine($"{currentOpponentPokemon.Name}'s HP is {currentOpponentPokemon.HitPoints}");
 
                 Console.WriteLine($"\nWhat will {currentTrainerPokemon.Name} do?");
+                
                 PrintAvailableMoves(currentTrainerPokemon);
-                var choice = Console.ReadLine();
-                var chosenMove = currentTrainerPokemon.CurrentMoves.Find(move => move.Name == choice);
+                var moveChoice = Console.ReadLine();
+                
+                while (!IsValidMoveChoice(currentTrainerPokemon, moveChoice))
+                {
+                    Console.Clear();
+                    Console.WriteLine("Oak's words echoed... There's a time and place for everything, but not now. Please choose a move from the list.");
+                    PrintAvailableMoves(currentTrainerPokemon);
+                    moveChoice = Console.ReadLine();
+                }
+                
+                var chosenMove = currentTrainerPokemon.CurrentMoves.Find(move => move.Name.Equals(moveChoice, StringComparison.OrdinalIgnoreCase));
 
                 Console.WriteLine($"\n{currentTrainerPokemon.Name} used {chosenMove.Name}!");
                 Thread.Sleep(1000);
@@ -84,8 +104,6 @@ public class Battle
                     break;
                 }
             }
-            
-            
         }
     }
 
@@ -97,12 +115,22 @@ public class Battle
         }
     }
 
+    private bool IsValidPokemonChoice(string choice)
+    {
+        return _availablePokemon.Find(pokemon => pokemon.Name.Equals(choice, StringComparison.OrdinalIgnoreCase)) != null;
+    }
+
     private void PrintAvailableMoves(BasePokemon pokemon)
     {
         foreach (var move in pokemon.CurrentMoves)
         {
             Console.WriteLine($"- {move.Name}");
         }
+    }
+
+    private bool IsValidMoveChoice(BasePokemon pokemon, string choice)
+    {
+        return pokemon.CurrentMoves.Find(move => move.Name.Equals(choice, StringComparison.OrdinalIgnoreCase)) != null;
     }
 
     private bool HasPokemonFainted(BasePokemon pokemon)
