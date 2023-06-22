@@ -27,7 +27,7 @@ public class Battle
             PrintAvailablePokemon();
             var pokemonChoice = Console.ReadLine();
             
-            while (!IsValidPokemonChoice(pokemonChoice))
+            while (!InputValidator.IsValidPokemonChoice(_availablePokemon, pokemonChoice))
             {
                 Console.WriteLine("\nOak's words echoed... There's a time and place for everything, but not now. Please choose a Pokemon from the list.");
                 PrintAvailablePokemon();
@@ -73,7 +73,7 @@ public class Battle
                 PrintAvailableMoves(currentTrainerPokemon);
                 var moveChoice = Console.ReadLine();
                 
-                while (!IsValidMoveChoice(currentTrainerPokemon, moveChoice))
+                while (!InputValidator.IsValidMoveChoice(currentTrainerPokemon, moveChoice))
                 {
                     Console.WriteLine("\nOak's words echoed... There's a time and place for everything, but not now. Please choose a move from the list.");
                     PrintAvailableMoves(currentTrainerPokemon);
@@ -115,22 +115,12 @@ public class Battle
         }
     }
 
-    private bool IsValidPokemonChoice(string choice)
-    {
-        return _availablePokemon.Find(pokemon => pokemon.Name.Equals(choice, StringComparison.OrdinalIgnoreCase)) != null;
-    }
-
     private void PrintAvailableMoves(BasePokemon pokemon)
     {
         foreach (var move in pokemon.CurrentMoves)
         {
             Console.WriteLine($"- {move.Name}");
         }
-    }
-
-    private bool IsValidMoveChoice(BasePokemon pokemon, string choice)
-    {
-        return pokemon.CurrentMoves.Find(move => move.Name.Equals(choice, StringComparison.OrdinalIgnoreCase)) != null;
     }
 
     private bool HasPokemonFainted(BasePokemon pokemon)
