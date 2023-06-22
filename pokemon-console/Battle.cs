@@ -24,13 +24,13 @@ public class Battle
         foreach (var trainer in _trainers)
         {
             Console.WriteLine($"\n{trainer.Name}, choose your Pokemon:");
-            PrintAvailablePokemon();
+            ConsoleWriter.PrintAvailablePokemon(_availablePokemon);
             var pokemonChoice = Console.ReadLine();
             
             while (!InputValidator.IsValidPokemonChoice(_availablePokemon, pokemonChoice))
             {
                 Console.WriteLine("\nOak's words echoed... There's a time and place for everything, but not now. Please choose a Pokemon from the list.");
-                PrintAvailablePokemon();
+                ConsoleWriter.PrintAvailablePokemon(_availablePokemon);
                 pokemonChoice = Console.ReadLine();
             }
             
@@ -70,13 +70,13 @@ public class Battle
 
                 Console.WriteLine($"\nWhat will {currentTrainerPokemon.Name} do?");
                 
-                PrintAvailableMoves(currentTrainerPokemon);
+                ConsoleWriter.PrintAvailableMoves(currentTrainerPokemon);
                 var moveChoice = Console.ReadLine();
                 
                 while (!InputValidator.IsValidMoveChoice(currentTrainerPokemon, moveChoice))
                 {
                     Console.WriteLine("\nOak's words echoed... There's a time and place for everything, but not now. Please choose a move from the list.");
-                    PrintAvailableMoves(currentTrainerPokemon);
+                    ConsoleWriter.PrintAvailableMoves(currentTrainerPokemon);
                     moveChoice = Console.ReadLine();
                 }
                 
@@ -104,22 +104,6 @@ public class Battle
                     break;
                 }
             }
-        }
-    }
-
-    private void PrintAvailablePokemon()
-    {
-        foreach (var pokemon in _availablePokemon)
-        {
-            Console.WriteLine($"- {pokemon.Name}");
-        }
-    }
-
-    private void PrintAvailableMoves(BasePokemon pokemon)
-    {
-        foreach (var move in pokemon.CurrentMoves)
-        {
-            Console.WriteLine($"- {move.Name}");
         }
     }
 
